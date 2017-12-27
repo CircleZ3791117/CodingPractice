@@ -33,3 +33,11 @@ class Solution(object):
 			if i % 2 == 0:
 				max_min_sum += nums[i]
 		return max_min_sum
+
+'''
+Better Solution:
+use one line
+'''
+class Solution(object):
+	def arrayPairSum(self, nums):
+		return sum(sorted(nums)[::2])

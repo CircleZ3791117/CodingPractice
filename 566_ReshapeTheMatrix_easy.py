@@ -117,3 +117,25 @@ class Solution:
 		it = itertools.chain(*nums)
 		return [list(itertools.islice(it, c)) for _ in xrange(r)]
 
+'''
+range xrange:
+
+1. range creates a list, so if you do range(1, 10000000) it creates a list in memory with 9999999 elements.
+
+xrange is a generator, so it is a sequence object is a that evaluates lazily.
+
+This is true, but in Python 3, range will be implemented by the Python 2 xrange(). If you need to actually generate the list, you will need to do:
+
+list(range(1,100))
+
+2. Remember, use the timeit module to test which of small snipps of code is faster!
+
+$ python -m timeit 'for i in range(1000000):' ' pass'
+10 loops, best of 3: 90.5 msec per loop
+$ python -m timeit 'for i in xrange(1000000):' ' pass'
+10 loops, best of 3: 51.1 msec per loop
+Personally, I always use range(), unless I were dealing with really huge lists -- as you can see, time-wise, for a list of a million entries, the extra overhead is only 0.04 seconds. And as Corey points out, in Python 3.0 xrange will go away and range will give you nice iterator behaviour anyway.
+
+
+'''
+
