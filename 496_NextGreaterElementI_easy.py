@@ -69,8 +69,6 @@ Key: using stack to get pairs in which the first element is smaller than the sec
 '''
 # [1,3,5,2,4]
 # [6,5,4,3,2,1,7]
-# Output:
-# [7,-1,-1,-1,-1]
 # Expected:
 # [7,7,7,7,7]
 
