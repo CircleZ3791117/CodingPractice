@@ -20,6 +20,12 @@ Note:
 The range of node's value is in the range of 32-bit signed integer.
 '''
 
+'''
+Solution
+'''
+
+# DFS
+
 class TreeNode(object):
 	def __init__(self, val):
 		self.val = val
@@ -32,19 +38,46 @@ class Solution:
 		:type root: TreeNode
 		:rtype: List[float]
 		"""
-		if root==None:
-			return
-		results = []
-				
-	
-			
+		res = []
+		count = []
+		self.average(root, i, res, count)
+		return [res[i]*1.0/count[i] for i in range(len(res))]
 
-# Your input
-# [3,9,20,15,7]
-# Your answer
-# [3,14.50000]
-# Expected answer
-# [3.00000,14.50000,11.00000]
+	def average(self, root, i, res, count):
+		if root == None:
+			return
+		if i < len(res):
+			res[i] += root.val
+			count[i] += 1
+		else:
+			res.append(root.val)
+			count.append(1)	
+		self.average(root.right, i+1, res, count)
+		self.average(root.left, i+1, res, count)		
+	
+# BFS
+class Solution:
+	def averageOfLevels(self, root):
+		queue = []
+		res = []
+		queue.append(root)
+		while(len(queue)!=0):
+			sum = 0
+			count = 0
+			tmp = []
+			while(len(queue)!=0):
+				sum += queue[0].val
+				count += 1
+				item = queue.pop(0)
+				if item.left != None:
+					tmp.append(item.left)
+				if item.right != None:
+					tmp.append(item.right)
+			queue = tmp
+			res.append(sum*1.0 / count)
+		return res
+
+				
 
 
 
