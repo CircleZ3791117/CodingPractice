@@ -28,6 +28,10 @@ Output: True
 Explanation:
 The binary representation of 10 is: 1010.
 '''
+
+'''
+Solution
+'''
 class Solution:
 	def hasAlternatingBits(self, n):
 		"""
@@ -39,6 +43,20 @@ class Solution:
 			if binary_n[i] == binary_n[i+1]:
 				return False
 		return True
+
+
+'''
+Better Solution
+'''
+class Solution:
+	def hasAlternatingBits(self, n):
+		while(n!=0):
+			cur = n % 2
+			n = n / 2
+			if cur == n % 2:
+				return False
+		return True
+
 
 
 
