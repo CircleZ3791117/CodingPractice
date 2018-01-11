@@ -77,6 +77,7 @@ class Solution(object):
 '''
 Better Solution
 '''
+# recursive
 class Solution:
 	def maxAreaOfIsland(self, grid):
 		m, n = len(grid), len(grid[0])
@@ -88,28 +89,47 @@ class Solution:
 				return 0
 		areas = [dfs(i,j) for i in range(m) for j in range(n) if grid[i][j]]
 		return max(areas) if areas else 0
+# iterative
+class Solution:
+	def maxAreaOfIsland(self, grid):
+		seen = set()
+		max_area = 0
+		for r0 , row in enumerate(grid):
+			for c0, val in enumerate(row):
+				if (r0,c0) not in seen and val:
+					seen.add((r0,c0))
+					stack = [(r0,c0)]
+					tmp = 0
+					while(stack):
+						r, c = stack.pop()
+						tmp += 1
+						for nr, nc in ((r-1,c), (r+1,c), (r,c-1), (r, c+1)):
+							if 0 <= nr < len(grid) and 0 <= nc < len(grid[0]) and grid[nr][nc] == 1 and (nr, nc) not in seen:
+								stack.append((nr, nc))
+								seen.add((nr, nc))
+					max_area = max(tmp, max_area)
+		return max_area
 
 
-class Solution(object):
-    def maxAreaOfIsland(self, grid):
-        seen = set()
-        ans = 0
-        for r0, row in enumerate(grid):
-            for c0, val in enumerate(row):
-                if val and (r0, c0) not in seen:
-                    shape = 0
-                    stack = [(r0, c0)]
-                    seen.add((r0, c0))
-                    while stack:
-                        r, c = stack.pop()
-                        shape += 1
-                        for nr, nc in ((r-1, c), (r+1, c), (r, c-1), (r, c+1)):
-                            if (0 <= nr < len(grid) and 0 <= nc < len(grid[0])
-                                    and grid[nr][nc] and (nr, nc) not in seen):
-                                stack.append((nr, nc))
-                                seen.add((nr, nc))
-                    ans = max(ans, shape)
-        return ans
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 
