@@ -53,7 +53,7 @@ class Solution(object):
 		for employee in employees:
 			if employee.id == id:
 				return get_importance_recursively(employee, im, employees)
-
+# [1,5,[2,3]],[2,3,[]],[3,3,[]]]
 
 # iterative
 class Solution(object):
