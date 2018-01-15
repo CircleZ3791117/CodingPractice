@@ -1,6 +1,7 @@
 # !/usr/bin/env python
 # -*- coding=utf-8 -*-
 
+__author__ = 'circlezhou'
 '''
 Description:
 Given two integers L and R, find the count of numbers in the range [L, R] (inclusive) having a prime number of set bits in their binary representation.
