@@ -35,7 +35,6 @@ class Solution:
 		:type s: str
 		:rtype: int
 		"""
-		#print('target:{}'.format(s))
 		count = 0
 		for i, c in enumerate(s):
 			if i == len(s)-1:
@@ -45,13 +44,11 @@ class Solution:
 			while(j < len(s) and s[j] == c):
 				step1 += 1
 				j += 1
-			#print('step1:{}'.format(step1))
 			if j + step1 < len(s):
 				result = sum(int(i) for i in s[j:j+step1+1])
 				if result == 0 or result == step1+1:
 					count += 1
 			#print('c:{},i:{},count:{}'.format(c, i, count)
-		print(count)
 		return count
 
 # test 10101
