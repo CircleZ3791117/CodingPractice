@@ -1,2 +1,2 @@
-# CodingPractice
-Practice coding skill every day
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
