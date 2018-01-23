@@ -55,8 +55,28 @@ Output:
 Solution
 '''
 class Solution:
-	def findDissappearedNumbers(self, nums):
+	def findDisappearedNumbers(self, nums):
 		"""
 		:type nums: List[int]
 		:rtype: List[int]
 		"""
+		length = len(nums)
+		num_map = {}
+		result = []
+		for i in nums:
+			if not num_map.has_key(i):
+				num_map[i] = 1
+		for j in xrange(1, length+1):
+			if not num_map.has_key(j):
+				result.append(j)
+		return result
+
+
+
+
+
+
+
+
+
+
