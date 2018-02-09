@@ -89,4 +89,28 @@ class Solution:
 s = Solution()
 print(s.getSum(1, -1))
 
+'''
+Better Solution: Bit manipulation
+'''
+class Solution:
+	def getSum(self, a, b):
+		# if b == 0:
+		# 	return a
+		# sum_with_no_carry = a ^ b
+		# carry = (a & b) << 1
+		# return self.getSum(sum_with_no_carry, carry)
+		# 32 bits integer max
+		MAX = 0x7FFFFFFF
+		# 32 bits integer min
+		MIN = 0x80000000
+		# MASK to get last 32 bits
+		MASK = 0xFFFFFFFF
+		while(b!=0):
+			# ^ get different bits and & gets double 1s, << moves carry
+			a, b = ((a ^ b) & MASK), (((a & b) << 1) & MASK)
+		return a if a < MAX else ~(a ^ MASK)
+
+
+
+
 
