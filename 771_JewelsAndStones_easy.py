@@ -30,3 +30,26 @@ class Solution:
 		:type S: str
 		:rtype: int
 		"""
+		j_map = {}
+		result = 0
+		for i in J:
+			j_map[i] = 1
+		for i in S:
+			if j_map.has_key(i):
+				result += 1
+		return result
+
+'''
+Better Solution
+'''
+class Solution:
+	def numJewelsInStones(self, J, S):
+		return sum(map(S.count, J))
+
+class Solution:
+	def numJewelsInStones(self, J, S):
+		return sum(map(J.count, S))
+
+class Solution:
+	def numJewelsInsStones(self, J, S):
+		return sum(s in J for s in S)
