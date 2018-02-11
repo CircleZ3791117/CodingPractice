@@ -106,7 +106,7 @@ class Solution:
 		# MASK to get last 32 bits
 		MASK = 0xFFFFFFFF
 		while(b!=0):
-			# ^ get different bits and & gets double 1s, << moves carry
+			# ^ get different bits and & gets double 1s, << moves  carry
 			a, b = ((a ^ b) & MASK), (((a & b) << 1) & MASK)
 		return a if a < MAX else ~(a ^ MASK)
 
