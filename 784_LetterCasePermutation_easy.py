@@ -29,18 +29,8 @@ class Solution:
 		:type S: str
 		:rtype: List[str]
 		"""
-		result = []
-		if S is None:
-			return result
-		result.append(S)
-		tmp = str()
-		for i in S:
-			if ord(i) >= 65 and ord(i) <= 90:
-				tmp += chr(ord(i) + 32)
-			if ord(i) >= 97 and ord(i) <= 122:
-				tmp += chr(ord(i) - 32)
-			tmp += i
-		result.append(tmp)
-		return result
+		
+
+
 
 
