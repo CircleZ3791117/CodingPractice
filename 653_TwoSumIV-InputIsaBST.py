@@ -74,7 +74,26 @@ For every current node with a value of p, we check if k−p already exists in th
 
 If even after the whole tree's traversal, no such element p can be found, the sum k can't be formed by using any two elements.
 '''
+class Solution:
+	def findTarget(self, root, k):
+		store = set()
+		return self.recursiveFindTarget(root, k, store)
 
+	def recursiveFindTarget(self, root, k, store):
+		if root == None:
+			return False
+		if (k - root.val) in store:
+			return True
+		store.add(root.val)
+		return self.recursiveFindTarget(root.left, k, store) | self.recursiveFindTarget(root.right, k, store)
+
+'''
+Complexity Analysis
+
+Time complexity : O(n). The entire tree is traversed only once in the worst case. Here, n refers to the number of nodes in the given tree.
+
+Space complexity : O(n). The size of the setset can grow upto nn in the worst case.
+'''
 
 
 
