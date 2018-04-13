@@ -53,6 +53,14 @@ class Solution(object):
 
 ## Super cool, the above method beats 100.00% of python3 submissions.
 		
-
-
+# A more elegant expression using Greedy
+class Solution(object):
+	def isOneBitCharacter(self, bits):
+		"""
+		:type bits: List[int]
+		:rtype: bool
+		"""
+		parity = bits.pop()
+		while bits and bits.pop(): parity ^= 1
+		return parity == 0
 
