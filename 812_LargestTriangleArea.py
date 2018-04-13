@@ -23,5 +23,29 @@ class Solution(object):
 		:type points: List[List[int]]
 		:rtype: float 
 		"""
+		# Using shoelace formula to calculate area of triangle
+		# shoelace formula is a mathematical algorithm to determine the area of a simple polygon whose vertices are described by their Cartesian
+		# x1  y1
+		# + \/ -
+		#	/\
+		# x2  y2
+		# +	\/ -
+		#	/\
+		# x3  y3
+		# +	\/ -
+		#	/\
+		# x4  y4
+		#--------
+		# +	\/ -
+		#	/\
+		# x1  y1
 		return max(0.5 * abs(i[0] * j[1] + j[0] * k[1] + k[0] * i[1] - i[0] * k[1] - j[0] * i[1] - k[0] * j[1])
 			for i, j, k in itertools.combinations(points, 3))
+
+'''
+Complexity Analysis:
+
+Time Complexity: O(N^3), where N is the length of points. We use three for-loops of length O(N), and our work calculating the area of a single triangle is O(1).
+
+Space Complexity: O(1).
+'''
