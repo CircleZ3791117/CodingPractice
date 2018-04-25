@@ -62,6 +62,14 @@ class Solution(object):
 					b_min = op[1]
 		return a_min * b_min
 
+'''
+Simplify the former method
+'''
+class Solution(object):
+	def maxCount(self, m, n, ops):
+		if not ops:
+			return m * n
+		return min([op[0] for op in ops]) * min([op[1] for op in ops])
 
 
 
