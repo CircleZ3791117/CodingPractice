@@ -69,3 +69,17 @@ class Solution(object):
                 results += roman_map[s[i]]
                 i += 1
         return results
+
+ '''
+ Straightforward Solution
+ '''
+ class Solution(object):
+ 	def romanToInt(self, s):
+ 		roman_map = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+ 		result = 0
+		for i in range(0, len(s) - 1):
+			if roman_map[s[i]]  < roman_map[s[i+1]]:
+				result -= roman_map[s[i]]
+			else:
+				result += roman_map[s[i]]
+		return result + roman_map[s[-1]]
