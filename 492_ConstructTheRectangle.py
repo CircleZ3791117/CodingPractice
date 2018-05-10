@@ -47,3 +47,14 @@ class Solution(object):
 				return list((L, int(area/L)))
 			L += 1
 
+# Faster method: ** is much faster than math.sqrt
+class Solution(object):
+	def constructRectangle(self, area):
+		"""
+		:type area: int
+		:rtype: List[int]
+		"""
+		w = int(area**0.5)
+		while area % w != 0:
+			w -= 1
+		return list((int(area/w), w))
