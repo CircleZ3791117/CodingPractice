@@ -19,6 +19,7 @@ Only three moves are needed (remember each move increments two elements):
 [1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
 
 '''
+# TLE
 class Solution(object):
     def minMoves(self, nums):
         """
@@ -50,5 +51,21 @@ class Solution(object):
         nums[index] -= steps
         return nums
 
+# It's a math question
+'''
+sum : initial sum
+m: total steps
+n: length
+min_num: minimu num of nums
+x: final value of every element
 
+sum + m(n - 1) = x * n
+					   \
+					   	 m = sum - min_num * n	
+                       /
+x = min_num + m
+'''
+class Solution(object):
+	def minMoves(self, nums):
+		return sum(nums) - min(nums) * len(nums)
 
