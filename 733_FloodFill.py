@@ -64,4 +64,20 @@ class Solution(object):
             target_coordinates_set = self.add_equal_around(image, (sr, sc + 1), r, c, target_coordinates_set, image_tag)
         return target_coordinates_set
 
+ # Store the original color and when finding the target one, just change the value of it, in this way, we don't have to matain a flag_map
+class Solution(object):
+ 	def floodFill(self, image, sr, sc, newColor):
+ 		R, C, source_color = len(image), len(image[0]), image[sr][sc]
+ 		def dfs(r, c):
+ 			if not (0 <= r < R and 0 <= c < C) or image[r][c] != source_color:
+ 				return
+ 			image[r][c] = newColor
+ 			[dfs(r+x, c+y) for (x, y) in [(1, 0), (0, 1), (-1, 0), (0, -1)]]
+ 		if image[sr][sc] != newColor:
+ 			dfs(sr, sc)
+ 		return image
+
+
+
+
 
