@@ -24,6 +24,7 @@ Input: [1,1,1,3,3,4,3,2,4,2]
 Output: true
 '''
 
+# TLE
 class Solution(object):
 	def containsDuplicate(self, nums):
 		"""
@@ -37,4 +38,11 @@ class Solution(object):
 			else:
 				return True
 		return False
+
+
+# Using set
+class Solution(object):
+	def containsDuplicate(self, nums):
+		return not len(nums) == len(set(nums))
+
 
