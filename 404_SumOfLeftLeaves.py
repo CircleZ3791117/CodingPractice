@@ -33,7 +33,31 @@ class Solution(object):
 		if node == None:
 			return left_leaves_list
 		if node.left:
-			left_leaves_list.append(node.left.val)
+			if not (node.left.left or node.left.right):
+				left_leaves_list.append(node.left.val)
 			self.first_traverse(node.left, left_leaves_list)
 		if node.right:
 			self.first_traverse(node.right, left_leaves_list)
+		return left_leaves_list
+
+
+# Using stack
+class Solution(object):
+    def sumOfLeftLeaves(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+        	return 0
+        stack = [root]
+        res = 0
+        while stack:
+        	node = stack.pop()
+        	if node.left:
+        		if not node.left.left and not node.left.right:
+        			res += node.left.val
+        		stack.append(node.left)
+        	if node.right:
+        		stack.append(node.right)
+        return res
