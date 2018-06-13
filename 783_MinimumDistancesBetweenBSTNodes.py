@@ -69,42 +69,15 @@ class Solution(object):
 		mid_list = []
 		diff_list = []
 		stack = []
-		root_bak = copy.deepcopy(root)
-		stack.append(root_bak)
-		while(stack):
-			top = stack[-1]
-			if top.left:
-				stack.append(top.left)
-				top.left = None
-			else:
-				tmp = stack.pop()
-				mid_list.append(tmp.val)
-				if tmp.right:
-					stack.append(tmp.right)
-		for i in range(len(mid_list)-1):
-			diff_list.append(abs(mid_list[i] - mid_list[i+1]))
+		node = root
+		while node or stack:
+			while node:
+				stack.append(node)
+				node = node.left
+			if stack:
+				top = stack.pop()
+				mid_list.append(top.val)
+				node = top.right
+		for i in range(len(mid_list) - 1):
+			diff_list.append(abs(mid_list[i]-mid_list[i+1]))
 		return min(diff_list)
-
-# After the love, 
-
-# If you sit down and obesrve, you will find the panic in your heart. You can see things that you can't
-# see than before. We feel lost somethimes because of losing beliefs. 
-
-# What can i do for you? In the process of creation. The true love.
-
-# we have keep poistive remember the most import time is now. The most important people is the people
-# around you. You try to serve the human beings. If something is easy to get, than it is boring.
-# Marriage has to be perfomed. When you can find and catch the details, but every time I get home, I
-# can get a flower. I'm his girl friend. Why he knows nothing? She chose to back up. Two people love each
-# other for 7 years. 
-
-# This is what i know as love. I love to . Dao, the basic principles.
-
-# Hello, every one , today we are talking about
-
-# I came here the first time. The know things very well. You are the flowers under heart.
-
-# Please give a big hug to your children after the exam.
-
-# The first impression is very import. If i'm different from the world, then just let me be different. This
-# Time just let this time be differ
