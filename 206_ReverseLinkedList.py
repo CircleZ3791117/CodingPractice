@@ -40,3 +40,24 @@ class Solution(object):
 			p = p.next
 		return head
 
+
+# Using iterative method
+class Solution(object):
+	def reverseList(self, head):
+		"""
+		:type head: ListNode
+		:rtype: ListNode
+		"""
+		if not head:
+			return
+		first = head
+		second = first.next
+		while sencod:
+			if sencod.next:
+				tmp = sencod.next
+			else:
+				second.next = first
+				break
+			second.next = first
+			first = second
+			second = tmp
