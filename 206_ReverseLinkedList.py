@@ -50,14 +50,31 @@ class Solution(object):
 		"""
 		if not head:
 			return
+		tail = head
+		while tail.next:
+			tail = tail.next
 		first = head
 		second = first.next
-		while sencod:
-			if sencod.next:
-				tmp = sencod.next
+		while second:
+			if second.next:
+				tmp = second.next
 			else:
 				second.next = first
 				break
 			second.next = first
 			first = second
 			second = tmp
+		head.next = None
+		return tail
+
+# Using recursive method
+class Solution(object):
+	def reverseList(self, head):
+		if not head or not head.next:
+			return head
+		p = self.reverseList(head.next)
+		head.next.next = head
+		head.next = None
+		return p
+
+
