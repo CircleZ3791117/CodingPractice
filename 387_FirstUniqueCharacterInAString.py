@@ -35,3 +35,25 @@ class Solution(object):
 			if value_list[i] == 1:
 				return s.index(char_list[i])
 		return -1
+
+# If the char is unique, indexof(find) == indexof(rfind)
+
+class Solution(object):
+	def firstUniqChar(self, s):
+		"""
+		:type s: str
+		:rtype: int
+		"""
+		alphabet = 'abcdefghijklmnopqrstyvwxyz'
+		index = len(s)
+		for c in alphabet:
+			if c in s:
+				l = s.find(c)
+				r = s.rfind(c)
+			else:
+				continue
+			if l == r and l < index:
+				index = l
+		if index == len(s):
+			return -1
+		return index
