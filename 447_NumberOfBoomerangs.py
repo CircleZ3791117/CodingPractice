@@ -81,5 +81,10 @@ class Solution(object):
 		results = 0
 		for p in points:
 			distance_map = {}
-			
+			for q in points:
+				square_distance = math.pow((p[0]-q[0]), 2) + math.pow((p[1]-q[1]), 2)
+				distance_map[square_distance] = 1 + distance_map.get(square_distance, 0)
+			for k in distance_map:
+				results += distance_map[k] * (distance_map[k] - 1)
+		return results
 
