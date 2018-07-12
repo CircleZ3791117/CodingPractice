@@ -28,5 +28,16 @@ class Solution(object):
 		"""
 		rtype: str
 		"""
-		sql_statement = 'Select distinct(Email) from Person where count(Email) > 1'
+		sql_statement = 'Select Email from Person group by Email having count(Email) > 1;'
 		return sql_statement
+
+# Another method using template
+class Solution(object):
+	def getSQLStatement(self):
+		"""
+		rtype: str
+		"""
+		sql_statement = "SELECT Email FROM (SELECT Email, count(Email) AS num FROM Person GROUP BY Email) AS Temtable WHERE num>1;"
+		return sql_statement
+
+
