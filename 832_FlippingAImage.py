@@ -56,7 +56,15 @@ class Solution(object):
 			l[tl-i] = tmp
 
 
+# Better solution using l[~i] which stands for the symmetrical position of i in the list
 
+class Solution(object):
+	def flipAndInvertImage(self, A):
+		mid =  (len(A) + 1) / 2
+		for row in A:
+			for i in range(mid+1):
+				row[i], row[~i] = row[~i] ^ 1, row[i] ^ 1
+		return A
 
 
 
