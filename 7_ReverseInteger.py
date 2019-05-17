@@ -40,3 +40,38 @@ class Solution:
 		else:
 			return 0
 
+class Solution:
+	def reverse(self, x: int) -> int:
+		s = str(x)
+		flag = 1
+		print('test')
+		if s[0] == '-':
+			s = s[1:]
+			flag = -1
+		s = s[::-1]
+		result = 0
+		l = len(s)
+		for item in s:
+			result += int(item) * pow(10, l-1)
+			l -= 1
+		return result * flag
+
+'''
+Other methods
+'''
+
+# mathematical way, using long int to store result
+class Solution:
+	def reverse(self, x: int) -> int:
+		sign = x >= 0
+		if not sign:
+			x = -x
+		result = 0
+		while x:
+			result = result * 10 + x % 10
+			x = x // 10
+		if not sign:
+			result = -result
+		if result <= 2**31 - 1 and result >= -2**31:
+			return result
+		return 0 
