@@ -37,13 +37,15 @@ class Solution:
 				res.append(nums2[j])
 				j += 1
 		if i == len(nums1):
-			res.append(nums2[j:])
-		if j == len(nums2)
-			res.append(nums1[i:])
+			for item in nums2[j:]:
+				res.append(item)
+		if j == len(nums2):
+			for item in nums1[i:]:
+				res.append(item)
 		rl = len(res)
 		if rl == 0:
 			return 0
 		if rl % 2 == 0:
-			return (res[rl/2] + res[rl/2-1])/2.0
+			return (res[rl//2] + res[rl//2-1])/2.0
 		else:
 			return res[rl//2]
