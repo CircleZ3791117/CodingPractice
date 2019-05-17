@@ -74,4 +74,19 @@ class Solution:
 			result = -result
 		if result <= 2**31 - 1 and result >= -2**31:
 			return result
-		return 0 
+		return 0
+
+# a better way to make sure that any int number in the function is in the range [-2**31, 2**31-1]
+class Solution:
+	def reverse(self, x: int) -> int:
+		res = 0
+		sign = x >= 0
+		x = x if sign else -x
+		while x:
+			pop = x % 10
+			x = x // 10
+			if res > (2**31)/10 or (res == (2**31)/10 and pop > 7): return 0
+			if res < (-2**31)/10 or (res == (-2**31)/10 and pop < -8): return 0
+			res = res * 10 + pop
+		res = res if sign else -res
+		return res
