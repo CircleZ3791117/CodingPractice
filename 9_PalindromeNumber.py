@@ -32,5 +32,20 @@ class Solution:
 		else:
 			return False
 
-
+# Solve it without changing the integer to a string
+class Solution2:
+	def isPalindrome(self, x: int) -> bool:
+		tmp = x
+		if tmp < 0:
+			return False
+		if tmp == 0:
+			return True
+		reverse_value = 0
+		while tmp:
+			reverse_value = reverse_value * 10 + tmp % 10
+			tmp = tmp // 10
+		if reverse_value == x:
+			return True
+		else:
+			return False
 
