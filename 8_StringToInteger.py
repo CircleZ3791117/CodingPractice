@@ -82,7 +82,7 @@ class Solution:
 			return 0
 		ns_len = len(number_stack)
 		result = 0
-		for i in range(ns_len):
+		for i in range(ns_len):			
 			result += int(number_stack[i]) * 10**(ns_len-i-1)
 		result = result * flag
 		if result > 2**31 - 1:
@@ -91,3 +91,4 @@ class Solution:
 			return -2**31
 		else:
 			return result
+
