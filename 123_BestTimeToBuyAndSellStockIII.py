@@ -40,4 +40,5 @@ class Solution:
 		:rtype: int
 		"""
 		pass
+		
 
