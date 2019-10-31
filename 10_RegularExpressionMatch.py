@@ -29,7 +29,7 @@ Input:
 s = "aa"
 p = "a*"
 Output: true
-Explanation: '*' means zero or more of the precedeng element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
 
 Example 3:
 Input:
@@ -54,34 +54,55 @@ Output: false
 
 class Solution:
 	def isMatch(self, s: str, p: str) -> bool:
-		len_s = len(s)
-		len_p = len(p)
 		i = 0
 		j = 0
-		while i < len_s and j < len_p:
+		while i < len(s) and j < len(p):
 			if s[i] == p[j] or p[j] == '.':
 				i += 1
-				j += 1
-			elif s[i] != p[j] and p[j] == '*' and j-1 >= 0 and (p[j-1]==s[i] or p[j-1]=='.'):
-				i += 1
-			elif s[i] != p[j] and p[j] != '*' and j+2 < len_p and p[j+1] == '*':
-				j += 2
+				if j+1 < len(p) and p[j+1] != '*':
+					j += 1
+				if j+1 >= len(p):
+					j += 1
 			else:
-				return False
-		if i == len_s:
-			if j < len_p:
-				while j < len_p:
-					if p[j] == '*':
-						j += 1
-					elif p[j] != '*' and j+1 < len_p and p[j+1] == '*':
-						j += 2
-					else:
-						return False
-				return True
-			else:
-				return True
+				if j+1 < len(p) and p[j+1] == '*':
+					j += 2
+		if i == len(s):
+			return True
 		else:
 			return False
+
+
+import unittest
+class SolutionTestCase(unittest.TestCase):
+
+	def __init__(self, *args, **kwargs):
+		super(SolutionTestCase, self).__init__(*args, *kwargs)
+		self.test_solution = Solution()
+
+	@classmethod
+	def setUpClass(cls):
+		print("setUpClass")
+
+	@classmethod
+	def tearDownClass(cls):
+		print("tearDownClass")
+
+	def setUp(self):
+		print("--setUp--")
+
+	def tearDown(self):
+		print("--tearDown--")
+
+	def test_isMatch(self):
+		print("test isMatch()...")
+		self.assertEqual(False, self.test_solution.isMatch('aa', 'a'))
+		self.assertEqual(True, self.test_solution.isMatch('aa', 'aa'))
+
+
+if __name__ == "__main__":
+	unittest.main()
+
+
 			
 
 
