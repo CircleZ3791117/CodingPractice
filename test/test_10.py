@@ -24,7 +24,7 @@ class TestSolution(unittest.TestCase):
 
     def test_isMatch(self):
         print("test isMatch()...")
-        #self.assertEqual(False, self.test_solution.isMatch('aa', 'a'))
+        self.assertEqual(False, self.test_solution.isMatch('aa', 'a'))
         self.assertEqual(True, self.test_solution.isMatch('aa', 'aa'))
 
 
