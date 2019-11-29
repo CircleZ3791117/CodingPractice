@@ -35,3 +35,4 @@ class TestLC98(unittest.TestCase):
         self.assertTrue(self.solution.isValidBST(self.btree1))
         self.assertFalse(self.solution.isValidBST(self.btree2))
         self.assertFalse(self.solution.isValidBST(self.btree3))
+        self.assertFalse(self.solution.isValidBST_recur(self.btree3))
