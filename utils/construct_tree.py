@@ -138,3 +138,15 @@ class BinaryTree:
         for item in btree_node_list:
             val_list.append(item.val)
         return val_list
+
+    def is_equal_trees(self, root1, root2):
+        if not root1 and not root2:
+            return True
+        if not root1 and root2:
+            return False
+        if root1 and not root2:
+            return False
+        self.is_equal_trees(root1.left, root2.left)
+        if root1.val == root2.val:
+            return True
+        self.is_equal_trees(root1.right, root2.right)
