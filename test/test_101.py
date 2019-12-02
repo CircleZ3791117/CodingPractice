@@ -35,3 +35,5 @@ class TestLC101(unittest.TestCase):
         self.assertFalse(self.solution.isSymmetric(self.root1))
         self.assertFalse(self.solution.isSymmetric2(self.root1))
         self.assertTrue(self.solution.isSymmetric2(self.root))
+        self.assertFalse(self.solution.isSymmetric3(self.root1))
+        self.assertTrue(self.solution.isSymmetric3(self.root))

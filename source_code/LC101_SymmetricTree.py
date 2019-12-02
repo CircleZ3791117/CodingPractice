@@ -65,6 +65,28 @@ class Solution:
 
         return True
 
-
+    def isSymmetric3(self, root: TreeNode) -> bool:
+        if not root:
+            return True
+        if not root.left and not root.right:
+            return True
+        if not root.left or not root.right:
+            return False
+        left_queue = [root.left]
+        right_queue = [root.right]
+        while left_queue and right_queue:
+            lq_head = left_queue.pop(0)
+            rq_head = right_queue.pop(0)
+            if not lq_head and not rq_head:
+                continue
+            if not lq_head or not rq_head:
+                return False
+            if lq_head.val != rq_head.val:
+                return False
+            left_queue.append(lq_head.left)
+            left_queue.append(lq_head.right)
+            right_queue.append(rq_head.right)
+            right_queue.append(rq_head.left)
+        return True
 
 
