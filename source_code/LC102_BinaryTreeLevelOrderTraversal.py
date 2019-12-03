@@ -28,6 +28,7 @@ class Solution:
         queue = [root]
         result_list = []
         while queue:
+            # current level node number is equal to queue size
             level_num = len(queue)
             sub_list = []
             i = 0
