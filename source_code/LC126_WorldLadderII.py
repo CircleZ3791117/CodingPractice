@@ -41,14 +41,16 @@ import collections
 class Solution:
     def findLadders(self, beginWord: str, endWord: str, wordList: list) -> list:
         """
-        Return all the paths of word ladders if there exits.
+        Find out whether there are paths from the begin word to the end word using dictionary in the word list.
 
-        :param beginWord: str, start word
-        :param endWord: str, end word
-        :param wordList: list, dictionary of usable wordlist
-        :return: list, list of word ladders
+        Args:
+            beginWord: str, start word
+            endWord: str, end word
+            wordList: dictionary of word list
+
+        Returns:
+            list, list of word ladder list
         """
-
         res = list()  # final result
         wordList = set(wordList)  # remove duplicate word
         if beginWord in wordList:
