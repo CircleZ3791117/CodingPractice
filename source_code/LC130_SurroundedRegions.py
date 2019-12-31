@@ -44,15 +44,26 @@ class Solution(object):
         if not n:
             return
         i, j = 0, 0
+        # while i < m:
+        #     self.check_recur(i, 0, board, m, n)
+        #     if n > 1:
+        #         self.check_recur(i, n - 1, board, m, n)
+        #     i += 1
+        # while j < n:
+        #     self.check_recur(0, j, board, m, n)
+        #     if m > 1:
+        #         self.check_recur(m - 1, j, board, m, n)
+        #     j += 1
+            
         while i < m:
-            self.check_recur(i, 0, board, m, n)
+            self.check_using_queue(i, 0, board, m, n)
             if n > 1:
-                self.check_recur(i, n-1, board, m, n)
+                self.check_using_queue(i, n - 1, board, m, n)
             i += 1
         while j < n:
-            self.check_recur(0, j, board, m, n)
+            self.check_using_queue(0, j, board, m, n)
             if m > 1:
-                self.check_recur(m-1, j, board, m, n)
+                self.check_using_queue(m - 1, j, board, m, n)
             j += 1
 
         # Change board after checking recursively on the board to eat all of the 'O' that can't reach the boarder
@@ -67,15 +78,55 @@ class Solution(object):
         return board
 
     def check_recur(self, i, j, board, m, n):
+        """
+        DFS(Depth First Search) traverse.
+        
+        Args:
+            i: int, 0 axis. 
+            j: int, 1 axis.
+            board: list(list(str)), chess board.
+            m: int, chess board width.
+            n: int, chess board length.
+
+        Returns:
+            list(list(str)), changed board.
+        """
         if board[i][j] == 'O':
             board[i][j] = 'S'
-            if i-1 >= 0:
-                self.check_recur(i-1, j, board, m, n)
-            if i+1 < m:
-                self.check_recur(i+1, j, board, m, n)
-            if j-1 >= 0:
-                self.check_recur(i, j-1, board, m, n)
-            if j+1 < n:
-                self.check_recur(i, j+1, board, m, n)
+            if i - 1 >= 0:
+                self.check_recur(i - 1, j, board, m, n)
+            if i + 1 < m:
+                self.check_recur(i + 1, j, board, m, n)
+            if j - 1 >= 0:
+                self.check_recur(i, j - 1, board, m, n)
+            if j + 1 < n:
+                self.check_recur(i, j + 1, board, m, n)
 
+    def check_using_queue(self, i, j, board, m, n):
+        """
+        BFS(Breadth First Search) traverse.
+        Args:
+            i: 
+            j: 
+            board: 
+            m: 
+            n: 
 
+        Returns:
+
+        """
+        queue = [(i, j)]
+
+        while queue:
+            head = queue.pop(0)
+            if board[head[0]][head[1]] == 'O':
+                board[head[0]][head[1]] = 'S'
+                if head[0] - 1 >= 0 and board[head[0] - 1][head[1]] == 'O':
+                    queue.append((head[0] - 1, head[1]))
+                if head[0] + 1 < m and board[head[0] + 1][head[1]] == 'O':
+                    queue.append((head[0] + 1, head[1]))
+                if head[1] - 1 >= 0 and board[head[0]][head[1] - 1] == 'O':
+                    queue.append((head[0], head[1] - 1))
+                if head[1] + 1 < n and board[head[0]][head[1] + 1] == 'O':
+                    queue.append((head[0], head[1] + 1))
+            
