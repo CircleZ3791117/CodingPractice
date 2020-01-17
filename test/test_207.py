@@ -28,3 +28,7 @@ class TestLC207(unittest.TestCase):
         self.assertEqual(False, self.solution.canFinish(2, [[1, 0], [0, 1]]))
         self.assertEqual(False, self.solution.canFinish(3, [[1, 0], [0, 2], [2, 1]]))
         self.assertEqual(True, self.solution.canFinish(3, [[1, 0], [2, 0]]))
+        self.assertEqual(True, self.solution.canFinish2(2, [[1, 0]]))
+        self.assertEqual(False, self.solution.canFinish2(2, [[1, 0], [0, 1]]))
+        self.assertEqual(False, self.solution.canFinish2(3, [[1, 0], [0, 2], [2, 1]]))
+        self.assertEqual(True, self.solution.canFinish2(3, [[1, 0], [2, 0]]))

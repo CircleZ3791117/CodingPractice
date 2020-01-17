@@ -33,6 +33,8 @@ class Solution(object):
     def canFinish(self, numCourses, prerequisites):
         """
         Check whether can finish the course according to the prerequisites.
+        Using Topological sort, the process is as follows:
+            1. build graph using dict(k:list)
 
         Args:
             numCourses: int, number of courses to take.
@@ -66,7 +68,38 @@ class Solution(object):
                 return False
         return True
 
+    def canFinish2(self, numCourses, prerequisities):
+        """
+        Using DFS method to solve this problem.
+        The key is that if visit a node which has been visited before means that there is a loop in the dfs process.
+        In this case, return False. Otherwise return True.
 
+        Args:
+            numCourses: int, number of courses.
+            prerequisities: list(list((int, int))), the dependencies of courses.
+
+        Returns:
+            bool, whether can finish the course schedule according to the prerequisities.
+        """
+        graph = [[] for _ in range(numCourses)]
+        visited = [0] * numCourses
+        for pair in prerequisities:
+            graph[pair[1]].append(pair[0])
+        for i in range(len(graph)):
+            if not self.dfs(graph, visited, i):
+                return False
+        return True
+
+    def dfs(self, graph_list, visited_list, course_num):
+        if visited_list[course_num]:
+            return False
+        else:
+            visited_list[course_num] = 1
+        for new_course_num in graph_list[course_num]:
+            if not self.dfs(graph_list, visited_list, new_course_num):
+                return False
+        visited_list[course_num] = 0
+        return True
 
 
 
