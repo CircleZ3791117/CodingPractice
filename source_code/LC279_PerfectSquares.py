@@ -36,29 +36,19 @@ class Solution:
             perfect_square_numbers.append(square_i)
             i += 1
             square_i = i * i
-        sn_len = len(perfect_square_numbers)
 
-        min_num = n
-
-        for i in range(sn_len):
-            cur_seq = [[perfect_square_numbers[i]]]
-            while cur_seq:
-                for item in cur_seq:
-                    if sum(item) == n:
-                        min_num = min(min_num, len(item))
-                        cur_seq = []
+        cur_level = [n]
+        count = 0
+        while cur_level:
+            count += 1
+            tmp = []
+            for num in cur_level:
+                for val in perfect_square_numbers:
+                    if num == val:
+                        return count
+                    if val < num:
+                        tmp.append(num - val)
+                    if val > num:
                         break
-                    if sum(item) > n:
-                        cur_seq.remove(item)
-
-                new_seq = []
-
-                for item in cur_seq:
-                    next_item_level = [item.copy() for _ in range(sn_len)]
-                    for k in range(sn_len):
-                        next_item_level[k].append(perfect_square_numbers[k])
-                    for new_item in next_item_level:
-                        new_seq.append(new_item)
-                cur_seq = new_seq
-
-        return min_num
+            cur_level = tmp
+        return count
